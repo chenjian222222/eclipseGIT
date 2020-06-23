@@ -14,7 +14,7 @@ public interface BillDao {
 	 * @throws Exception
 	 */
 	public int add(Connection connection,Bill bill)throws Exception;
-
+//nnihao
 
 	/**
 	 * 通过查询条件获取供应商列表-模糊查询-getBillList
