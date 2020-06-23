@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.dao.FaqsMapper">
+	<select id="getFaqsByPage" resultType="Faqs" parameterType="map">
+		select f.id,f.classid,f.title,f.content,f.createdate,c.cname 
+		 from faqs f left join classe c on f.classid=c.id where 1=1
+		<if test="title != null and title != ''">
+			and f.title like CONCAT('%',#{title},'%') 
+		</if>
+		limit #{pageIndex},#{pageSize}
+	</select>
+	<select id="getFaqsById" resultType="Faqs" parameterType="map">
+		select f.id,f.classid,f.title,f.content,f.createdate,c.cname 
+		from faqs f left join classe c on f.classid=c.id where 1=1
+		and f.id = #{id}
+	</select>
+	<select id="count" resultType="int" parameterType="map">
+		select count(1) from faqs where 1=1
+		<if test="title != null and title != ''">
+			and title like CONCAT('%',#{title},'%') 
+		</if>
+	</select>
+	<insert id="save" parameterType="Faqs">
+		INSERT INTO faqs(classid,title,content,createdate) VALUES(#{classid},#{title},#{content},#{createdate});
+	</insert>
+</mapper>
