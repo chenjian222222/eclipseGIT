@@ -2,7 +2,7 @@ package cn.bdqn.pojo;
 
 public class Classes {
 	private Integer id;//id
-	private String cname;
+	private String cname;//Ãû×Ö
 	public Integer getId() {
 		return id;
 	}
