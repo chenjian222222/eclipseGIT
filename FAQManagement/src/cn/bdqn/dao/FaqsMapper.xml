@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cn.bdqn.dao.FaqsMapper">
 	<select id="getFaqsByPage" resultType="Faqs" parameterType="map">
 		select f.id,f.classid,f.title,f.content,f.createdate,c.cname 
-		from faqs f left join classe c on f.classid=c.id where 1=1
+		 from faqs f left join classe c on f.classid=c.id where 1=1
 		<if test="title != null and title != ''">
 			and f.title like CONCAT('%',#{title},'%') 
 		</if>
